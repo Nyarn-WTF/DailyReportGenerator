@@ -19,15 +19,18 @@ func main() {
 	}
 	fmt.Println(daylist)
 
-	if err := os.Mkdir("DailyReports", 0666); err != nil {
+	if err := os.Mkdir("DailyReports", 0775); err != nil {
 		fmt.Println(err)
 	}
 
-	os.Chdir("DailyReports")
+	err := os.Chdir("./DailyReports")
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	for i := 1; i <= 12; i++ {
 		subDir := strconv.Itoa(i)
-		if err := os.MkdirAll(subDir, 0666); err != nil {
+		if err := os.MkdirAll(subDir, 0775); err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
@@ -39,7 +42,7 @@ func main() {
 			str = str + "## 今後について\n"
 			str = str + "## 感想\n"
 			by := []byte(str)
-			err := ioutil.WriteFile(subDir+"/"+strconv.Itoa(j)+".md", by, 0666)
+			err := ioutil.WriteFile(subDir+"/"+strconv.Itoa(j)+".md", by, 0775)
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
