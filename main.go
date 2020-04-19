@@ -35,7 +35,7 @@ func main() {
 			str := "# 今日(" + strconv.Itoa(i) + "/" + strconv.Itoa(j) + ")の進捗\n"
 			str = str + "## やったこと\n"
 			str = str + "## わかったこと\n"
-			str = str + "## 分からなかったこと\n"
+			str = str + "## わからなかったこと\n"
 			str = str + "## 今後について\n"
 			str = str + "## 感想\n"
 			by := []byte(str)
