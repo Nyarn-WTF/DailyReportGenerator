@@ -51,6 +51,10 @@ func main() {
 	}
 
 	str := "# [YOR_NAME] Daily Reports Index\n"
+	str = str + "## Month\n"
+	for i := 1; i <= 12; i++ {
+		str = str + "- [" + strconv.Itoa(i) + "月](##" + strconv.Itoa(i) + "月)\n"
+	}
 	for i := 1; i <= 12; i++ {
 		str = str + "## " + strconv.Itoa(i) + "月\n"
 		for j := 1; j <= daylist[i-1]; j++ {
