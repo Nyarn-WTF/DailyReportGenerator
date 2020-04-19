@@ -49,4 +49,18 @@ func main() {
 			}
 		}
 	}
+
+	str := "# [YOR_NAME] Daily Reports Index\n"
+	for i := 1; i <= 12; i++ {
+		str = str + "## " + strconv.Itoa(i) + "月\n"
+		for j := 1; j <= daylist[i-1]; j++ {
+			str = str + "- [" + strconv.Itoa(i) + "/" + strconv.Itoa(j) + "](./" + strconv.Itoa(i) + "/" + strconv.Itoa(j) + ".md)\n"
+		}
+	}
+	by := []byte(str)
+	err = ioutil.WriteFile("README.md", by, 0664)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
